@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+response=$(dunstify -A default,Logout --appname="System" "Logout" "Click to log out" --urgency=critical)
+
+g810-led -fx color logo aa0000
+rm ~/.critical_active
+
+if [[ ${response} == "default" ]]; then
+    i3-msg exit
+fi

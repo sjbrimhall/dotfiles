@@ -1,0 +1,252 @@
+####                             ####
+## Triskelion i3 Config File Mk. 1 ##
+####                             ####
+
+###                     ###
+# Window Manager settings #
+###                     ###
+
+# This section controls how the window manager functions. It does
+# not include keybinds that are not directly related to the window
+# manager's functions.
+
+# Set mod keys
+set $mod Mod4
+set $alt Mod1
+
+# Set font
+font Source Code Pro 8
+
+# Reload configuration
+bindsym $mod+$alt+Shift+r reload
+
+# Restart inplace
+bindsym $mod+Shift+r restart
+
+# Log out
+bindsym $mod+Shift+e exec --no-startup-id i3-logout
+
+# Reboot
+bindsym $mod+Ctrl+e exec --no-startup-id i3-reboot
+
+# Capture all F-keys as I don't want programs using them
+bindsym F1 exec --no-startup-id true
+bindsym F2 exec --no-startup-id true
+bindsym F3 exec --no-startup-id true
+bindsym F4 exec --no-startup-id true
+#bindsym F5 exec --no-startup-id true
+bindsym F6 exec --no-startup-id true
+bindsym F7 exec --no-startup-id true
+bindsym F8 exec --no-startup-id true
+bindsym F9 exec --no-startup-id true
+bindsym F10 exec --no-startup-id true
+bindsym F11 exec --no-startup-id true
+bindsym F12 exec --no-startup-id true
+
+###                        ###
+# Window Management Settings #
+###                        ###
+
+# This section controls window behavior and management keybinds.
+# It also includes resize modes.
+
+# Set monitor vars
+set $monitor_1 HDMI-1
+set $monitor_2 HDMI-2
+
+# Set keybinds to switch workspaces
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+bindsym $mod+Mod2+KP_1 workspace 11
+bindsym $mod+Mod2+KP_2 workspace 12
+bindsym $mod+Mod2+KP_3 workspace 13
+bindsym $mod+Mod2+KP_4 workspace 14
+bindsym $mod+Mod2+KP_5 workspace 15
+bindsym $mod+Mod2+KP_6 workspace 16
+bindsym $mod+Mod2+KP_7 workspace 17
+bindsym $mod+Mod2+KP_8 workspace 18
+bindsym $mod+Mod2+KP_9 workspace 19
+bindsym $mod+Mod2+KP_0 workspace 20
+
+# Set keybinds to move windows between workspaces
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+bindsym $mod+Shift+Mod2+KP_End move container to workspace 11
+bindsym $mod+Shift+Mod2+KP_Down move container to workspace 12
+bindsym $mod+Shift+Mod2+KP_Next move container to workspace 13
+bindsym $mod+Shift+Mod2+KP_Left move container to workspace 14
+bindsym $mod+Shift+Mod2+KP_Begin move container to workspace 15
+bindsym $mod+Shift+Mod2+KP_Right move container to workspace 16
+bindsym $mod+Shift+Mod2+KP_Home move container to workspace 17
+bindsym $mod+Shift+Mod2+KP_Up move container to workspace 18
+bindsym $mod+Shift+Mod2+KP_Prior move container to workspace 19
+bindsym $mod+Shift+Mod2+KP_Insert move container to workspace 20
+
+# Bind workspaces to monitors
+workspace 1 output $monitor_1
+workspace 2 output $monitor_1
+workspace 3 output $monitor_1
+workspace 4 output $monitor_1
+workspace 5 output $monitor_1
+workspace 6 output $monitor_1
+workspace 7 output $monitor_1
+workspace 8 output $monitor_1
+workspace 9 output $monitor_1
+workspace 10 output $monitor_1
+
+workspace 11 output $monitor_2
+workspace 12 output $monitor_2
+workspace 13 output $monitor_2
+workspace 14 output $monitor_2
+workspace 15 output $monitor_2
+workspace 16 output $monitor_2
+workspace 17 output $monitor_2
+workspace 18 output $monitor_2
+workspace 19 output $monitor_2
+workspace 20 output $monitor_2
+
+# Allow dragging of floating windows whilst holding $mod
+floating_modifier $mod
+
+# Resize mode
+mode "resize" {
+     bindsym b resize shrink width 10 px or 1 ppt
+     bindsym n resize grow height 10 px or 1 ppt
+     bindsym p resize shrink height 10 px or 1 ppt
+     bindsym f resize grow width 10 px or 1 ppt
+
+     # Exit resize mode
+     bindsym Return mode "default"
+     bindsym Escape mode "default"
+     bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Global resize bindings
+bindsym $mod+$alt+b resize shrink width 10 px or 1 ppt
+bindsym $mod+$alt+n resize grow height 10 px or 1 ppt
+bindsym $mod+$alt+p resize shrink height 10 px or 1 ppt
+bindsym $mod+$alt+f resize grow width 10 px or 1 ppt
+
+# Move windows
+bindsym $mod+Shift+b move left
+bindsym $mod+Shift+f move right
+bindsym $mod+Shift+p move up
+bindsym $mod+Shift+n move down
+
+# Switch windows
+bindsym $mod+b focus left
+bindsym $mod+f focus right
+bindsym $mod+p focus up
+bindsym $mod+n focus down
+
+# Split horizontally
+bindsym $mod+h split h
+
+# Split vertically
+bindsym $mod+v split v
+
+# Bring window fullscreen
+bindsym $mod+$alt+Shift+f fullscreen toggle
+
+# Bring window floating
+bindsym $mod+Shift+space floating toggle
+
+# Change focus to floating
+bindsym $mod+space focus mode_toggle
+
+# Focus on parent container
+bindsym $mod+a focus parent
+
+# Close focused window
+bindsym $mod+Shift+q kill
+
+# Change container arrangement
+bindsym $mod+e layout toggle split
+bindsym $mod+t layout tabbed
+bindsym $mod+s layout stacking
+
+###        ###
+# Appearance #
+###        ###
+
+# This section configures the appearance of windows and their
+# positioning. This section should be removed if running a version
+# of i3 that does not support gaps or rounded corners.
+
+for_window [class=".*"] border pixel 0
+#for_window [class="Termite"] border pixel 1
+
+gaps inner 10
+gaps outer 5
+
+border_radius 5
+
+###              ###
+# Desktop Features #
+###              ###
+
+# This section includes things that most people consider basic
+# desktop features, such as the ability to launch programs or
+# functional media keys.
+
+# Sensible launcher (launches program based on current workspace)
+bindsym $mod+Return exec --no-startup-id i3-sensible-launcher
+
+# Terminal launch override (quick shortcut that always launches a terminal)
+bindsym $mod+Shift+Return exec termite
+
+# Program menu
+bindsym $mod+d exec rofi -modi drun -show drun -theme dmenu
+
+# Media keys
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+
+# Volume keys
+bindsym XF86AudioRaiseVolume exec --no-startup-id pulseaudio-ctl up 1
+bindsym XF86AudioLowerVolume exec --no-startup-id pulseaudio-ctl down 1
+bindsym XF86AudioMute	     exec --no-startup-id pulseaudio-ctl mute
+
+# Lock screen
+bindsym $mod+l exec --no-startup-id xset s activate
+
+# Dismiss notification alert
+bindsym F5 exec --no-startup-id g810-led -fx color logo aa0000 && rm ~/.critical_active
+
+###              ###
+# Startup Programs #
+###              ###
+
+# This section starts up all of the desktop environment programs.
+# Many of these programs are launched via SystemD. This section
+# starts the target for them.
+
+# Bring systemd i3-desktop target online
+exec --no-startup-id systemctl --user start graphical@i3.target
+
+# Disable autosleep and enable autolock after 10 minutes of inactivity
+exec --no-startup-id xset s 600 600
+
+# Enable numlock
+exec_always --no-startup-id numlockx on

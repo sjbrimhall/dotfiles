@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+response = $(dunstify -A default,Reboot --appname="System" "Reboot" "Click to reboot" --urgency=critical)
+
+g810-led -fx color logo aa0000
+rm ~/.critical_active
+
+if [[ ${response} == "default" ]]; then
+    /usr/bin/systemctl reboot
+fi
