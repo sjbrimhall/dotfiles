@@ -1,0 +1,10 @@
+[Unit]
+Description=Desktop compositor
+PartOf = graphical@i3.target
+
+[Service]
+Environment = DISPLAY=:%i
+ExecStart = /usr/bin/compton --config=%h/.config/compton.conf
+
+[Install]
+WantedBy = graphical@i3.target

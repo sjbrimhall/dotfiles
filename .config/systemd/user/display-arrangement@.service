@@ -1,0 +1,11 @@
+[Unit]
+Description = Arranging displays in the expected configuration
+PartOf = graphical@i3.target
+
+[Service]
+Type=oneshot
+Environment = DISPLAY=:%i
+ExecStart = %h/.screenlayout/main.sh
+
+[Install]
+WantedBy = graphical@i3.target

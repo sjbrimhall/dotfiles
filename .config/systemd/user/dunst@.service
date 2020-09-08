@@ -1,0 +1,10 @@
+[Unit]
+Description = dunst notification daemon
+PartOf = graphical@i3.target
+
+[Service]
+Environment = DISPLAY=:%i
+ExecStart = dunst
+
+[Install]
+WantedBy = graphical@i3.target

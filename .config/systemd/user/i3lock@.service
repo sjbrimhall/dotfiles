@@ -1,0 +1,11 @@
+[Unit]
+Description = i3lock screen locker
+PartOf = graphical@i3.target
+
+[Service]
+Type = simple
+Environment = DISPLAY=:%i
+ExecStart = /usr/bin/xss-lock %h/.local/bin/screenlock
+
+[Install]
+WantedBy = graphical@i3.target

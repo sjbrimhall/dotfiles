@@ -1,0 +1,7 @@
+[Unit]
+Description=Check for updates
+Requisite=dunst@0.service
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/updates.sh

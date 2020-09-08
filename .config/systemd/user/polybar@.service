@@ -1,0 +1,10 @@
+[Unit]
+Description=Polybar status bar
+PartOf = graphical@i3.target
+
+[Service]
+Type=simple
+ExecStart=/home/stephen/.local/bin/polybar-start.sh %i
+
+[Install]
+WantedBy=graphical@i3.target

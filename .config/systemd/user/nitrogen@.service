@@ -1,0 +1,12 @@
+[Unit]
+Description=Wallpaper setting utility
+PartOf=graphical@i3.target
+After = display-arrangement@%i.service
+
+[Service]
+Type=oneshot
+Environment = DISPLAY=:%i
+ExecStart=/usr/bin/nitrogen --restore
+
+[Install]
+WantedBy=graphical@i3.target

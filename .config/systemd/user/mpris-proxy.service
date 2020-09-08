@@ -1,0 +1,9 @@
+[Unit]
+Description = Forwarding bluetooth audio controls to MPRIS players
+
+[Service]
+Type = simple
+ExecStart = /usr/bin/mpris-proxy
+
+[Install]
+WantedBy = graphical@i3.target
