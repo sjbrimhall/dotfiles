@@ -1,5 +1,6 @@
 ####                             ####
 ## Triskelion Polybar Config MK II ##
+##          Codename: TEXT         ##
 ####                             ####
 
 [colors/main]
@@ -43,39 +44,54 @@ module-margin = 2
 padding = 2
 width = 100%
 height = 26
+line-size = 1
+separator = %{F#a03a5775}|%{F-}
 
 font-0 = Source Code Pro:size=10;2
-font-1 = Icons:size=10;2
 
-[bar/user_status]
+[bar/user_status_left]
 inherit = shared_bar_settings
 
 # Settings
 bottom = false
 
 # Appearance
-modules-left = lan wlan
-modules-center = i3
-# Valid options are volume, mpris, mpd
-modules-right = ${env:AUDIO_MODULE:volume}
+modules-left = lan wlan i3-mode
+modules-center = mpris
+modules-right = i3
+
+[bar/user_status_right]
+inherit = shared_bar_settings
+
+# Settings
+bottom = false
+
+# Appearance
+modules-left = i3
+modules-center = mpris
+modules-right = volume date time
 
 [bar/system_status_left]
+inherit = shared_bar_settings
 
 # Settings
 bottom = true
 
 # Appearance
 modules-left = cpu
+modules-center = reboot
 modules-right = root
 
 [bar/system_status_right]
+inherit = shared_bar_settings
 
 # Settings
 bottom = true
 
 # Appearance
 modules-left = domain
-modules-right = ram
+modules-center = reboot
+modules-right = ram swap
 
 ###                ###
 # Module Definitions #
@@ -90,24 +106,199 @@ enable-click = true
 enable-scroll = false
 
 # Icons
-ws-icon-0  =  0;
-ws-icon-1  =  1;
-ws-icon-2  =  2;
-ws-icon-3  =  3;
-ws-icon-4  =  4;
-ws-icon-5  =  5;
-ws-icon-6  =  6;
-ws-icon-7  =  7;
-ws-icon-8  =  8;
-ws-icon-9  =  9;
-ws-icon-10 = 10;
-ws-icon-11 = 11;
-ws-icon-12 = 12;
-ws-icon-13 = 13;
-ws-icon-14 = 14;
-ws-icon-15 = 15;
-ws-icon-16 = 16;
-ws-icon-17 = 17;
-ws-icon-18 = 18;
-ws-icon-19 = 19;
-ws-icon-20 = 20;
+ws-icon-0  =  0;desk
+
+ws-icon-1  =  1;term
+ws-icon-2  =  2;code
+ws-icon-3  =  3;web
+ws-icon-4  =  4;docs
+ws-icon-5  =  5;image
+ws-icon-6  =  6;files
+ws-icon-7  =  7;music
+ws-icon-8  =  8;disc
+ws-icon-9  =  9;mail
+ws-icon-10 = 10;cfg
+
+ws-icon-11 = 11;term
+ws-icon-12 = 12;code
+ws-icon-13 = 13;web
+ws-icon-14 = 14;docs
+ws-icon-15 = 15;vbox
+ws-icon-16 = 16;vm
+ws-icon-17 = 17;image
+ws-icon-18 = 18;slack
+ws-icon-19 = 19;zoom
+ws-icon-20 = 20;cfg
+
+# Disabled labels
+label-mode = 
+
+# Workspace List Format
+format = <label-state>
+
+# Focused workspaces
+label-focused = %index%: %icon%
+label-focused-foreground = ${colors/main.green}
+label-focused-padding = 1
+label-focused-overline = ${colors.foreground}
+
+# Unfocused (hidden) workspaces
+label-unfocused = %index%
+label-unfocused-padding = 1
+
+# Visible (but unfocused) workspaces
+label-visible = %index%: %icon%
+label-visible-foreground = ${colors/alt.black}
+label-visible-padding = 1
+label-visible-overline = ${colors/alt.black}
+
+# Urgent (pinged) workspaces
+label-urgent = %index%
+label-urgent-foreground = ${colors/alt.yellow}
+label-urgent-padding = 1
+label-urgent-overline = ${colors/alt.yellow}
+
+[module/i3-mode]
+type = internal/i3
+
+# Mode label
+label-mode = mode: %{F#5b4a90}%mode%%{F-}
+
+# Format
+format = <label-mode>
+
+[module/time]
+type = internal/date
+
+# Settings
+interval = 0.5
+time = %H:%M:%S
+
+# Appearance
+format = <label>
+label = %time%
+
+[module/date]
+type = internal/date
+
+# Settings
+interval = 0.5
+date = %Y-%m-%d
+
+# Appearance
+format = <label>
+label = %date%
+
+[module/volume]
+type = internal/pulseaudio
+
+# Settings
+use-ui-max = true
+
+# Formatting
+format-volume = vol:<label-volume>
+label-volume = %percentage:3%%
+
+format-muted = mut:<label-muted>
+label-muted = ${self.label-volume}
+format-muted-foreground = ${colors/alt.black}
+
+[module/mpris]
+type = custom/script
+
+tail = true
+exec = ~/.config/polybar/scripts/mpris_status_2.py
+
+[module/lan]
+type = internal/network
+
+# Settings
+interface = lan
+interval = 1
+
+# Formatting
+format-connected = link: <label-connected>
+label-connected = %{F#42949b}online%{F-} %local_ip%
+
+format-disconnected = link: <label-disconnected>
+label-disconnected = offline
+label-disconnected-foreground = ${colors/main.red}
+
+[module/wlan]
+type = internal/network
+
+# Settings
+interface = wlan
+interval = 1
+
+# Formatting
+format-connected = wireless: <label-connected>
+label-connected = %{F#42949b}online%{F-} %essid%
+
+format-disconnected = wireless: <label-disconnected>
+label-disconnected = offline
+label-disconnected-foreground = ${colors/alt.black}
+
+[module/cpu]
+type = internal/cpu
+
+# Settings
+interval = 0.5
+
+# Formatting
+format = cpu: <label>
+
+label = %percentage-core1:3%%%percentage-core2:3%%%percentage-core3:3%%%percentage-core4:3%%%percentage-core5:3%%%percentage-core6:3%%%percentage-core7:3%%%percentage-core8:3%%%percentage-core9:3%%%percentage-core10:3%%%percentage-core11:3%%%percentage-core12:3%%%percentage-core13:3%%%percentage-core14:3%%%percentage-core15:3%%%percentage-core16:3%%
+
+[module/root]
+type = internal/fs
+
+# Settings
+interval = 10
+mount-0 = /
+fixed-values = true
+
+# Formatting
+format-mounted = <label-mounted>
+label-mounted = system storage: %free% free
+
+[module/domain]
+type = internal/fs
+
+# Settings
+interval = 10
+mount-0 = /domain
+fixed-values = true
+
+# Formatting
+format-mounted = <label-mounted>
+label-mounted = %free% free: domain
+
+[module/ram]
+type = internal/memory
+
+# Settings
+interval = 1
+
+# Formatting
+format = mem: <label>
+
+label = %gb_used% of %gb_total% used
+
+[module/swap]
+type = internal/memory
+
+# Settings
+interval = 1
+
+# Formatting
+format = swap: <label>
+
+label = %gb_swap_used% used
+
+[module/reboot]
+type = custom/script
+
+# Settings
+interval = 60
+exec = ~/.config/polybar/scripts/reboot-indicator.sh

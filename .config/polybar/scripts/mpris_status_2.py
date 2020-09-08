@@ -4,6 +4,7 @@ import time
 import sys
 import gi
 import re
+import os
 import notify2 as Notify
 
 label_error = "program error"
@@ -17,8 +18,9 @@ foreground_playing = "-"
 foreground_paused = "#3a5775"
 
 title_maxlen = 30;
+artist_maxlen = 30;
 
-notify = True
+notify = os.environ['POLYBAR_MONITOR'] == "HDMI-1"
 
 def color_text(text: str, color: str) -> str:
     return f"%{{F{color}}}{text}%{{F-}}"
@@ -87,6 +89,11 @@ class StatusDisplay:
             status.title = self._player.get_title() or ""
             status.artist = self._player.get_artist() or ""
             status.album = self._player.get_album() or ""
+
+            if len(status.title) > title_maxlen:
+                status.title = status.title[:title_maxlen-1] + '…'
+            if len(status.artist) > artist_maxlen:
+                status.artist = status.artist[:artist_maxlen-1] + '…'
 
             return status
         else:
