@@ -1,5 +1,5 @@
 ####                             ####
-## Triskelion Polybar Config MK II ##
+## Zephyr One Polybar Config MK II ##
 ##          Codename: TEXT         ##
 ####                             ####
 
@@ -49,7 +49,7 @@ separator = %{F#a03a5775}|%{F-}
 
 font-0 = Source Code Pro:size=10;2
 
-[bar/user_status_left]
+[bar/user_status]
 inherit = shared_bar_settings
 
 # Settings
@@ -57,41 +57,19 @@ bottom = false
 
 # Appearance
 modules-left = lan wlan i3-mode
-modules-center = mpris
-modules-right = i3
-
-[bar/user_status_right]
-inherit = shared_bar_settings
-
-# Settings
-bottom = false
-
-# Appearance
-modules-left = i3
-modules-center = mpris
+modules-center = i3
 modules-right = volume date time
 
-[bar/system_status_left]
+[bar/system_status]
 inherit = shared_bar_settings
 
 # Settings
 bottom = true
 
 # Appearance
-modules-left = cpu
-modules-center = reboot
-modules-right = root
-
-[bar/system_status_right]
-inherit = shared_bar_settings
-
-# Settings
-bottom = true
-
-# Appearance
-modules-left = domain
-modules-center = reboot
-modules-right = ram swap
+modules-left = cpu reboot
+modules-center = root
+modules-right = mem battery
 
 ###                ###
 # Module Definitions #
@@ -213,7 +191,7 @@ exec = ~/.config/polybar/scripts/mpris_status_2.py
 type = internal/network
 
 # Settings
-interface = lan
+interface = enp0s31f6
 interval = 1
 
 # Formatting
@@ -228,7 +206,7 @@ label-disconnected-foreground = ${colors/main.red}
 type = internal/network
 
 # Settings
-interface = wlan
+interface = wlp4s0
 interval = 1
 
 # Formatting
@@ -248,7 +226,7 @@ interval = 0.5
 # Formatting
 format = cpu: <label>
 
-label = %percentage-core1:3%%%percentage-core2:3%%%percentage-core3:3%%%percentage-core4:3%%%percentage-core5:3%%%percentage-core6:3%%%percentage-core7:3%%%percentage-core8:3%%%percentage-core9:3%%%percentage-core10:3%%%percentage-core11:3%%%percentage-core12:3%%%percentage-core13:3%%%percentage-core14:3%%%percentage-core15:3%%%percentage-core16:3%%
+label = %percentage-core1:3%%%percentage-core2:3%%%percentage-core3:3%%%percentage-core4:3%%
 
 [module/root]
 type = internal/fs
@@ -302,3 +280,30 @@ type = custom/script
 # Settings
 interval = 60
 exec = ~/.config/polybar/scripts/reboot-indicator.sh
+
+[module/battery]
+type = internal/battery
+
+# Settings
+battery = BAT0
+adapter = AC
+
+# Formatting
+format-charging = bat: <ramp-capacity><label-charging> chrg
+format-full = 
+format-discharging = bat: <ramp-capacity><label-discharging>
+
+label-charging = %percentage%%%{F-}
+label-discharging = %percentage%%%{F-}
+
+ramp-capacity-0 = %{F#7e344f}
+ramp-capacity-1 = %{F#b27a49}
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-5 = 
+ramp-capacity-6 = 
+ramp-capacity-7 = 
+ramp-capacity-8 = 
+ramp-capacity-9 =
+
