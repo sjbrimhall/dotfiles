@@ -69,7 +69,7 @@ bottom = true
 # Appearance
 modules-left = cpu reboot
 modules-center = root
-modules-right = mem battery
+modules-right = ram battery
 
 ###                ###
 # Module Definitions #
