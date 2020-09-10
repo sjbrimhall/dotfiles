@@ -142,5 +142,3 @@ load-module module-filter-apply
 #set-default-source input
 
 # Create user-friendly names for audio outputs
-update-sink-proplist alsa_output.pci-0000_29_00.1.hdmi-stereo-extra2 device.description=Monitor
-update-sink-proplist alsa_output.pci-0000_2b_00.3.analog-stereo device.description=Headset
