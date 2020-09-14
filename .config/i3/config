@@ -30,18 +30,18 @@ bindsym $mod+Shift+e exec --no-startup-id i3-logout
 bindsym $mod+Ctrl+e exec --no-startup-id i3-reboot
 
 # Capture all F-keys as I don't want programs using them
-bindsym F1 exec --no-startup-id true
-bindsym F2 exec --no-startup-id true
-bindsym F3 exec --no-startup-id true
-bindsym F4 exec --no-startup-id true
-#bindsym F5 exec --no-startup-id true
-bindsym F6 exec --no-startup-id true
-bindsym F7 exec --no-startup-id true
-bindsym F8 exec --no-startup-id true
-bindsym F9 exec --no-startup-id true
-bindsym F10 exec --no-startup-id true
-bindsym F11 exec --no-startup-id true
-bindsym F12 exec --no-startup-id true
+# bindsym F1 exec --no-startup-id true
+# bindsym F2 exec --no-startup-id true
+# bindsym F3 exec --no-startup-id true
+# #bindsym F4 exec --no-startup-id true
+# #bindsym F5 exec --no-startup-id true
+# bindsym F6 exec --no-startup-id true
+# bindsym F7 exec --no-startup-id true
+# bindsym F8 exec --no-startup-id true
+# bindsym F9 exec --no-startup-id true
+# bindsym F10 exec --no-startup-id true
+# bindsym F11 exec --no-startup-id true
+# bindsym F12 exec --no-startup-id true
 
 ###                        ###
 # Window Management Settings #
@@ -232,7 +232,10 @@ bindsym XF86AudioMute	     exec --no-startup-id pulseaudio-ctl mute
 bindsym $mod+l exec --no-startup-id xset s activate
 
 # Dismiss notification alert
-bindsym F5 exec --no-startup-id g810-led -fx color logo aa0000 && rm ~/.critical_active
+# bindsym F5 exec --no-startup-id g810-led -fx color logo aa0000 && rm ~/.critical_active
+
+# # Toggle desktop UI mode
+# bindsym F4 exec --no-startup-id toggle-mode
 
 ###              ###
 # Startup Programs #

@@ -6,7 +6,7 @@ After = display-arrangement@%i.service
 [Service]
 Type=oneshot
 Environment = DISPLAY=:%i
-ExecStart=/usr/bin/nitrogen --restore
+ExecStart=/usr/bin/nitrogen --set-tiled %h/.config/wallpaper
 
 [Install]
 WantedBy=graphical@i3.target
