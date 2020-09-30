@@ -1,6 +1,6 @@
 # Simple shell aliasing
 
-alias emacs="emacsclient -t"
+alias emacs="TERM=screen-256color emacsclient -t"
 alias sumacs="sudo emacs -nw"
 
 alias systemctl="sudo systemctl"

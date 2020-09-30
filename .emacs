@@ -9,7 +9,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(lua-mode xterm-color)))
+ '(auth-source-save-behavior nil)
+ '(package-selected-packages
+   '(groovy-mode lsp-java ein color-theme-modern flycheck elpy lua-mode xterm-color)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -42,6 +44,34 @@
 (package-refresh-contents)
 
 (setq auto-save-file-name-transforms
-      `((".*" . ,temporary-file-directory t)))
+      `((".*" ,temporary-file-directory t)))
 (setq backup-directory-alist
       `(("." . ,(concat user-emacs-directory "backups"))))
+
+;; ----------------- ;;
+;; Development Setup ;;
+;; ----------------- ;;
+(elpy-enable)
+
+(setq python-shell-interpreter "jupyter"
+      python-shell-interpreter-args "console --simple-prompt"
+      python-shell-prompt-detect-failure-warning nil)
+(add-to-list 'python-shell-completion-native-disabled-interpreters
+	     "jupyter")
+
+(when (require 'flycheck nil t)
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
+
+;; ---------- ;;
+;; Java Setup ;;
+;; ---------- ;;
+
+(add-hook 'java-mode-hook (lambda ()
+			    (setq c-basic-offset 4
+				  tab-width 4
+				  indent-tabs-mode t)
+			    (smart-tabs-mode-enable)
+			    (smart-tabs-advice c-indent-line c-basic-offset)
+			    (smart-tabs-advice c-indent-region c-basic-offset)))
+
