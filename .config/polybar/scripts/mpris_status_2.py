@@ -8,19 +8,21 @@ import os
 import notify2 as Notify
 
 label_error = "program error"
-label_closed = "no player"
-label_playing = "%title% by %artist%"
-label_paused = "%title% by %artist%"
+label_closed = ""
+label_playing = "song: %title%"
+label_paused = "paused: %title%"
+
+label_notif = "%title% by %artist%"
 
 foreground_error = "#7e344f"
 foreground_closed = "#3a5775"
 foreground_playing = "-"
 foreground_paused = "#3a5775"
 
-title_maxlen = 30;
+title_maxlen = 20;
 artist_maxlen = 30;
 
-notify = os.environ['POLYBAR_MONITOR'] == "HDMI-1"
+notify = os.environ['POLYBAR_MONITOR'] != "HDMI-2"
 
 def color_text(text: str, color: str) -> str:
     return f"%{{F{color}}}{text}%{{F-}}"
@@ -43,7 +45,7 @@ class Status:
         self.album_artist = None
         self.color = "-"
 
-    def __str__(self):
+    def __repr__(self):
 
         output = label_closed
         self.color = foreground_closed
@@ -57,8 +59,22 @@ class Status:
 
         return output
 
+    def __str__(self):
+
+        output = label_closed
+        self.color = foreground_closed
+
+        if self.running:
+            output = label_notif.replace(
+                "%title%",self.title).replace(
+                "%artist%",self.artist).replace(
+                "%album%",self.album)
+            self.color = self.playing and foreground_playing or foreground_paused
+
+        return output
+
     def polybar_print(self):
-        return color_text(str(self), self.color)
+        return color_text(repr(self), self.color)
 
 class StatusDisplay:
 

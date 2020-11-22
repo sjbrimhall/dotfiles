@@ -56,7 +56,7 @@ inherit = shared_bar_settings
 bottom = false
 
 # Appearance
-modules-left = lan wlan i3-mode
+modules-left = lan wlan mpris i3-mode
 modules-center = i3
 modules-right = volume date time
 
@@ -215,7 +215,7 @@ label-connected = %{F#42949b}online%{F-} %essid%
 
 format-disconnected = wireless: <label-disconnected>
 label-disconnected = offline
-label-disconnected-foreground = ${colors/alt.black}
+label-disconnected-foreground = ${colors/main.red}
 
 [module/cpu]
 type = internal/cpu
