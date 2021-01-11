@@ -4,7 +4,7 @@ PartOf = graphical@i3.target
 
 [Timer]
 OnBootSec = 10s
-OnUnitActiveSec = 10m
+OnUnitActiveSec = 12h
 
 [Install]
 WantedBy = graphical@i3.target

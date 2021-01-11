@@ -22,7 +22,7 @@ foreground_paused = "#3a5775"
 title_maxlen = 20;
 artist_maxlen = 30;
 
-notify = os.environ['POLYBAR_MONITOR'] != "HDMI-2"
+notify = os.environ['POLYBAR_MONITOR'] == "eDP-1"
 
 def color_text(text: str, color: str) -> str:
     return f"%{{F{color}}}{text}%{{F-}}"

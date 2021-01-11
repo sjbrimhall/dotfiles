@@ -26,7 +26,7 @@ case $current_workspace in
 	exec apple-music-for-linux
 	;;
     8)
-	exec discord
+	exec discord-canary -disable-features=HardwareMediaKeyHandling
 	;;
     9)
 	exec zoom

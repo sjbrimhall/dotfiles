@@ -191,7 +191,7 @@ exec = ~/.config/polybar/scripts/mpris_status_2.py
 type = internal/network
 
 # Settings
-interface = enp0s31f6
+interface = enp13s0u1
 interval = 1
 
 # Formatting
