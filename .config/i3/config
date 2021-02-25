@@ -39,8 +39,8 @@ bindsym $mod+Ctrl+e exec --no-startup-id i3-reboot
 # It also includes resize modes.
 
 # Set monitor vars
-set $monitor_1 HDMI-1
-set $monitor_2 HDMI-2
+set $monitor_1 HDMI-3
+set $monitor_2 DVI-I-1
 
 # Set keybinds to switch workspaces
 bindsym $mod+1 workspace 1
@@ -187,8 +187,6 @@ for_window [class=".*"] border pixel 0
 gaps inner 10
 gaps outer 5
 
-border_radius 5
-
 ###              ###
 # Desktop Features #
 ###              ###
@@ -201,7 +199,7 @@ border_radius 5
 bindsym $mod+Return exec --no-startup-id i3-sensible-launcher
 
 # Terminal launch override (quick shortcut that always launches a terminal)
-bindsym $mod+Shift+Return exec termite
+bindsym $mod+Shift+Return exec xfce4-terminal
 
 # Program menu
 bindsym $mod+d exec rofi -modi drun -show drun -theme dmenu

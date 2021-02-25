@@ -8,7 +8,7 @@ function error() {
 
 case $current_workspace in
     [12])
-	exec termite
+	exec xfce4-terminal
 	;;
     3)
 	exec firefox --new-window
@@ -35,10 +35,10 @@ case $current_workspace in
 	exec pavucontrol
 	;;
     11)
-	exec termite
+	exec xfce4-terminal
 	;;
     12)
-	exec termite
+	exec xfce4-terminal
 	;;
     13)
 	exec firefox --new-window
