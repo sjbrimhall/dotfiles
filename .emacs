@@ -1,9 +1,17 @@
 (require 'package)
+(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 ;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
 ;; and `package-pinned-packages`. Most users will not need or want to do this.
 ;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
+(autoload 'run-prolog "prolog" "Start a Prolog sub-process." t)
+(autoload 'prolog-mode "prolog" "Major mode for editing Prolog programs." t)
+(autoload 'mercury-mode "prolog" "Major mode for editing Mercury programs." t)
+(setq prolog-system 'swi)
+(setq auto-mode-alist (append '(("\\.pl$" . prolog-mode)
+				("\\.m$" . mercury-mode))
+			      auto-mode-alist))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -11,7 +19,7 @@
  ;; If there is more than one, they won't work right.
  '(auth-source-save-behavior nil)
  '(package-selected-packages
-   '(groovy-mode lsp-java ein color-theme-modern flycheck elpy lua-mode xterm-color)))
+	 '(yaml-mode kotlin-mode haskell-mode groovy-mode lsp-java ein color-theme-modern flycheck elpy lua-mode xterm-color)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -24,6 +32,9 @@
 (add-to-list 'auto-mode-alist '("\\.service\\'" . conf-unix-mode))
 (add-to-list 'auto-mode-alist '("\\.target\\'" . conf-unix-mode))
 (add-to-list 'auto-mode-alist '("\\.timer\\'" . conf-unix-mode))
+(add-to-list 'auto-mode-alist '("\\.network\\'" . conf-unix-mode))
+(add-to-list 'auto-mode-alist '("\\.link\\'" . conf-unix-mode))
+(add-to-list 'auto-mode-alist '("\\.netdev\\'" . conf-unix-mode))
 
 (when (version<= "26.0.50" emacs-version )
   (global-display-line-numbers-mode))
@@ -62,6 +73,11 @@
 (when (require 'flycheck nil t)
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
   (add-hook 'elpy-mode-hook 'flycheck-mode))
+
+(setq-default c-default-style "linux"
+	      c-basic-offset 2
+	      tab-width 2
+	      indent-tabs-mode t)
 
 ;; ---------- ;;
 ;; Java Setup ;;

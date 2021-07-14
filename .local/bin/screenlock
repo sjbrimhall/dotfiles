@@ -3,10 +3,10 @@
 #i3lock -u -i ~/.config/i3lock/background -e -f
 
 i3lock -i ~/.config/i3lock/background -c 000000 -e --pass-media-keys \
---line-uses-ring --ringcolor=145a8f --keyhlcolor=4a86b4 --insidecolor=00000000 \
---ringvercolor=3a5775 --insidevercolor=000000 --ringwrongcolor=7e344f --insidewrongcolor=000000 \
---bshlcolor=7e344f --verifcolor=42949b --wrongcolor=7e344f \
---verif-font="Source Sans Pro" --wrong-font="Source Sans Pro" --indpos="960:750" \
---ring-width=3 --radius 50 --wrongtext="invalid authorization" --wrongsize=16 \
---veriftext="authenticating" --verifsize=16 --verifpos="960:560" \
---wrongpos="960:560" --noinputtext="no code"
+--line-uses-ring --ring-color=145a8f --keyhl-color=4a86b4 --inside-color=00000000 \
+--ringver-color=3a5775 --insidever-color=000000 --ringwrong-color=7e344f --insidewrong-color=000000 \
+--bshl-color=7e344f --verif-color=42949b --wrong-color=7e344f \
+--verif-font="Source Sans Pro" --wrong-font="Source Sans Pro" --ind-pos="960:750" \
+--ring-width=3 --radius 50 --wrong-text="invalid authorization" --wrong-size=16 \
+--verif-text="authenticating" --verif-size=16 --verif-pos="960:560" \
+--wrong-pos="960:560" --noinput-text="no code"

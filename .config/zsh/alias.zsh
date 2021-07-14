@@ -7,3 +7,5 @@ alias systemctl="sudo systemctl"
 alias userctl="\systemctl --user"
 
 alias reconf="source $HOME/.zshrc"
+
+alias cp="cp --reflink=always"

@@ -39,8 +39,8 @@ bindsym $mod+Ctrl+e exec --no-startup-id i3-reboot
 # It also includes resize modes.
 
 # Set monitor vars
-set $monitor_1 HDMI-1
-set $monitor_2 HDMI-2
+set $monitor_1 HDMI-2
+set $monitor_2 HDMI-1
 
 # Set keybinds to switch workspaces
 bindsym $mod+1 workspace 1
@@ -201,7 +201,7 @@ border_radius 5
 bindsym $mod+Return exec --no-startup-id i3-sensible-launcher
 
 # Terminal launch override (quick shortcut that always launches a terminal)
-bindsym $mod+Shift+Return exec termite
+bindsym $mod+Shift+Return exec alacritty
 
 # Program menu
 bindsym $mod+d exec rofi -modi drun -show drun -theme dmenu
@@ -219,14 +219,12 @@ bindsym XF86AudioMute	     exec --no-startup-id pulseaudio-ctl mute
 # Lock screen
 bindsym $mod+l exec --no-startup-id xset s activate
 
-# Dismiss notification alert
-bindsym F17 exec --no-startup-id g810-led -fx color logo aa0000 && rm ~/.critical_active
-
-# Toggle desktop UI mode
-bindsym F16 exec --no-startup-id toggle-mode
-
 # Activate Siri
-bindsym F15 exec --no-startup-id dbus-send --print-reply --system --dest=org.ofono /hfp/org/bluez/hci0/dev_14_9D_99_EA_47_52 org.ofono.Handsfree.SetProperty string:"VoiceRecognition" variant:boolean:true
+bindsym $mod+Shift+s exec --no-startup-id toggle-siri
+
+# Freeze and restart programs
+bindsym $mod+Insert exec --no-startup-id i3-resume-program
+bindsym $mod+Delete exec --no-startup-id i3-freeze-program
 
 ###              ###
 # Startup Programs #

@@ -69,7 +69,7 @@ bottom = false
 # Appearance
 modules-left = i3
 modules-center = mpris
-modules-right = volume date time
+modules-right = username volume date time
 
 [bar/system_status_left]
 inherit = shared_bar_settings
@@ -80,7 +80,7 @@ bottom = true
 # Appearance
 modules-left = cpu
 modules-center = reboot
-modules-right = root
+modules-right = anchor9 root
 
 [bar/system_status_right]
 inherit = shared_bar_settings
@@ -89,7 +89,7 @@ inherit = shared_bar_settings
 bottom = true
 
 # Appearance
-modules-left = domain
+modules-left = domain archives
 modules-center = reboot
 modules-right = ram swap
 
@@ -213,7 +213,7 @@ exec = ~/.config/polybar/scripts/mpris_status_2.py
 type = internal/network
 
 # Settings
-interface = lan
+interface = insight
 interval = 1
 
 # Formatting
@@ -262,6 +262,18 @@ fixed-values = true
 format-mounted = <label-mounted>
 label-mounted = system storage: %free% free
 
+[module/anchor9]
+type = internal/fs
+
+# Settings
+interval = 10
+mount-0 = /anchor9
+fixed-values = true
+
+# Formatting
+format-mounted = <label-mounted>
+label-mounted = anchor 9: %free% free
+
 [module/domain]
 type = internal/fs
 
@@ -273,6 +285,18 @@ fixed-values = true
 # Formatting
 format-mounted = <label-mounted>
 label-mounted = %free% free: domain
+
+[module/archives]
+type = internal/fs
+
+# Settings
+interval = 10
+mount-0 = /archives
+fixed-values = true
+
+# Formatting
+format-mounted = <label-mounted>
+label-mounted = %free% free: SHIELD archives
 
 [module/ram]
 type = internal/memory
@@ -302,3 +326,11 @@ type = custom/script
 # Settings
 interval = 60
 exec = ~/.config/polybar/scripts/reboot-indicator.sh
+
+[module/username]
+type = custom/script
+
+format = user: <label>
+
+interval = 86400
+exec = id -un
